@@ -101,10 +101,10 @@ jobs:
           set -x
           sudo chown -R $(whoami) /opt/homebrew
           /opt/homebrew/bin/brew install cmake pkg-config check gengetopt help2man opensc
-          sudo mkdir -p /use/local/lib/pkgconfig
-          sudo mkdir -p /use/local/bin
-          sudo mkdir -p /usr/local/include
-          sudo mkdir -p /usr/local/share/man
+          sudo mkdir -p $GITHUB_WORKSPACE/ypt/lib/pkgconfig
+          sudo mkdir -p $GITHUB_WORKSPACE/ypt/bin
+          sudo mkdir -p $GITHUB_WORKSPACE/ypt/include
+          sudo mkdir -p $GITHUB_WORKSPACE/ypt/share/man
       - name: Install OpenSSL
         run: |
           set -x
@@ -114,7 +114,7 @@ jobs:
           cd openssl-1.1.1m
           ./Configure darwin64-arm64-cc shared no-ssl2 no-ssl3 --prefix=$GITHUB_WORKSPACE/openssl -mmacosx-version-min=10.6
           make all install_sw VERSION="1.1.1m"
-          sudo cp $GITHUB_WORKSPACE/openssl/lib/libcrypto* /usr/local/lib/
+          sudo cp $GITHUB_WORKSPACE/openssl/lib/libcrypto* $GITHUB_WORKSPACE/ypt/lib/
       - name: Build and install
         run: |
           set -x
@@ -129,7 +129,7 @@ jobs:
           otool -L lib/libykpiv.dylib | grep libcrypto
           otool -L ykcs11/libykcs11.dylib | grep libcrypto
 
-          sudo make install
+          env DESTDIR="$GITHUB_WORKSPACE/ypt" sudo make install
 
           yubico-piv-tool --help | grep "Usage: yubico-piv-tool"
           objdump --syms /usr/local/lib/libykcs11.dylib | grep C_Sign
@@ -150,7 +150,7 @@ jobs:
           otool -L lib/libykpiv.dylib | grep libcrypto | wc -l | grep 0
           otool -L ykcs11/libykcs11.dylib | grep libcrypto | wc -l | grep 0
 
-          sudo make install
+          env DESTDIR="$GITHUB_WORKSPACE/ypt" sudo make install
 
           yubico-piv-tool --help | grep "Usage: yubico-piv-tool"
 
