@@ -99,6 +99,7 @@ jobs:
       - name: Install prerequisites
         run: |
           set -x
+          sudo chown -R $(whoami) /opt/homebrew
           /opt/homebrew/bin/brew install pkg-config check gengetopt help2man opensc
       - name: Install OpenSSL
         run: |
