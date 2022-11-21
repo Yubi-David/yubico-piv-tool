@@ -110,6 +110,8 @@ jobs:
           cd openssl-1.1.1m
           ./Configure darwin64-arm64-cc shared no-ssl2 no-ssl3 --prefix=$GITHUB_WORKSPACE/openssl -mmacosx-version-min=10.6
           make all install_sw VERSION="1.1.1m"
+          ls /usr
+          ls /use/local
           sudo cp $GITHUB_WORKSPACE/openssl/lib/libcrypto* /usr/local/lib/
       - name: Build and install
         run: |

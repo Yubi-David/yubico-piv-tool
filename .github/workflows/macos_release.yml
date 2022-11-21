@@ -2,7 +2,7 @@ name: MacOS Release
 # This workflow is triggered on pushes to the repository. This is machine tests that everything is set for a release
 # build. The binaries produced here can be used to make the release
 
-on: [push]
+#on: [push]
 
 jobs:
 
