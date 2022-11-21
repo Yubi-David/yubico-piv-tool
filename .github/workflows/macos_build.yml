@@ -113,6 +113,7 @@ jobs:
       - name: Build and install
         run: |
           set -x
+          export PATH=$PATH:/opt/homebrew/bin
           mkdir build
           cd build
           cmake .. -DVERBOSE_CMAKE=ON -DOPENSSL_PKG_PATH=$GITHUB_WORKSPACE/openssl/lib/pkgconfig
@@ -132,6 +133,7 @@ jobs:
       - name: Build using OpenSSL static link
         run: |
           set -x
+          export PATH=$PATH:/opt/homebrew/bin
           export PKG_CONFIG_PATH=$GITHUB_WORKSPACE/openssl/lib/pkgconfig:PKG_CONFIG_PATH
 
           rm -rf build; mkdir build; cd build
@@ -152,6 +154,7 @@ jobs:
       - name: Build with YKCS11_DBG is set
         run: |
           set -x
+          export PATH=$PATH:/opt/homebrew/bin
           export PKG_CONFIG_PATH=$GITHUB_WORKSPACE/openssl/lib/pkgconfig:PKG_CONFIG_PATH
 
           rm -rf build; mkdir build; cd build
@@ -166,6 +169,7 @@ jobs:
       - name: Build only library (no CLI and no ykcs11)
         run: |
           set -x
+          export PATH=$PATH:/opt/homebrew/bin
           export PKG_CONFIG_PATH=$GITHUB_WORKSPACE/openssl/lib/pkgconfig:PKG_CONFIG_PATH
 
           rm -rf build; mkdir build; cd build
@@ -176,6 +180,7 @@ jobs:
       - name: Build only dynamic libaries
         run: |
           set -x
+          export PATH=$PATH:/opt/homebrew/bin
           export PKG_CONFIG_PATH=$GITHUB_WORKSPACE/openssl/lib/pkgconfig:PKG_CONFIG_PATH
 
           rm -rf build; mkdir build; cd build
