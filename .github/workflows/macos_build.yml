@@ -100,7 +100,8 @@ jobs:
         run: |
           set -x
           sudo chown -R $(whoami) /opt/homebrew
-          /opt/homebrew/bin/brew install pkg-config check gengetopt help2man opensc
+          /opt/homebrew/bin/brew install cmake pkg-config check gengetopt help2man opensc
+          ls /opt/homebrew/bin
       - name: Install OpenSSL
         run: |
           set -x
