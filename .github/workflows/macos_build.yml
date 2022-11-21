@@ -106,11 +106,11 @@ jobs:
         run: |
           set -x
           cd $GITHUB_WORKSPACE
-          curl -L -O "https://www.openssl.org/source/openssl-1.1.1f.tar.gz"
-          tar xfz openssl-1.1.1f.tar.gz
-          cd openssl-1.1.1f
+          curl -L -O "https://www.openssl.org/source/openssl-1.1.1m.tar.gz"
+          tar xfz openssl-1.1.1m.tar.gz
+          cd openssl-1.1.1m
           ./Configure darwin64-arm64-cc shared no-ssl2 no-ssl3 --prefix=$GITHUB_WORKSPACE/openssl -mmacosx-version-min=10.6
-          make all install_sw VERSION="1.1.1f"
+          make all install_sw VERSION="1.1.1m"
       - name: Build and install
         run: |
           set -x
