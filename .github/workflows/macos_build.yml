@@ -109,7 +109,7 @@ jobs:
           curl -L -O "https://www.openssl.org/source/openssl-1.1.1f.tar.gz"
           tar xfz openssl-1.1.1f.tar.gz
           cd openssl-1.1.1f
-          ./Configure darwin64-x86_64-cc shared no-ssl2 no-ssl3 --prefix=$GITHUB_WORKSPACE/openssl -mmacosx-version-min=10.6
+          ./Configure darwin64-arm64-cc shared no-ssl2 no-ssl3 --prefix=$GITHUB_WORKSPACE/openssl -mmacosx-version-min=10.6
           make all install_sw VERSION="1.1.1f"
       - name: Build and install
         run: |
