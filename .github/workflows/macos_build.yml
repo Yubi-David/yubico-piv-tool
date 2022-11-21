@@ -130,6 +130,7 @@ jobs:
           otool -L ykcs11/libykcs11.dylib | grep libcrypto
 
           env DESTDIR="$GITHUB_WORKSPACE/ypt" sudo make install
+          export PATH=$PATH:$GITHUB_WORKSPACE/ypt/bin
 
           yubico-piv-tool --help | grep "Usage: yubico-piv-tool"
           objdump --syms /usr/local/lib/libykcs11.dylib | grep C_Sign
@@ -151,6 +152,7 @@ jobs:
           otool -L ykcs11/libykcs11.dylib | grep libcrypto | wc -l | grep 0
 
           env DESTDIR="$GITHUB_WORKSPACE/ypt" sudo make install
+          export PATH=$PATH:$GITHUB_WORKSPACE/ypt/bin
 
           yubico-piv-tool --help | grep "Usage: yubico-piv-tool"
 
