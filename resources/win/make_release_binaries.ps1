@@ -25,8 +25,8 @@ $LICENSES_DIR="$RELEASE_DIR/licenses"
 $env:VCPKG_DEFAULT_HOST_TRIPLET="$ARCH-windows"
 cd $VCPKG_PATH
 echo '{ "name": "dbkg", "version-string": "1.0.0", "dependencies": [ "openssl", "getopt" ], "builtin-baseline": "f6af75acc923c833a5620943e3fc7d5e4930f0df", "overrides": [ { "name": "openssl", "version-string": "1.1.1n" } ] }' > vcpkg.json
-.\vcpkg.exe install
-.\vcpkg.exe integrate install
+.\vcpkg.exe --host-triplet=$ARCH-windows install
+.\vcpkg.exe --host-triplet=$ARCH-windows integrate install
 #.\vcpkg.exe install openssl:$ARCH-windows
 #.\vcpkg.exe install getopt:$ARCH-windows
 
