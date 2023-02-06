@@ -31,6 +31,11 @@ echo '{ "name": "dbkg", "version-string": "1.0.0", "dependencies": [ "openssl", 
 
 $env:OPENSSL_ROOT_DIR ="$VCPKG_PATH/packages/openssl_$ARCH-windows"
 
+ls $VCPKG_PATH/packages
+ls $VCPKG_PATH/packages/openssl_$ARCH-windows
+ls $VCPKG_PATH/packages/openssl_$ARCH-windows/lib
+
+
 # Build for x86 architecture
 cd $SOURCE_DIR
 mkdir $BUILD_DIR; cd $BUILD_DIR
